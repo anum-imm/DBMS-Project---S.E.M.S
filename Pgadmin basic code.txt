@@ -1,0 +1,72 @@
+-- Club Table
+CREATE TABLE Club (
+    VenueId SERIAL PRIMARY KEY, -- Unique identifier for the venue
+    VenueName VARCHAR(50) NOT NULL UNIQUE, -- Name of the venue
+    Capacity INT NOT NULL CHECK (Capacity > 0) -- Maximum capacity of the venue
+);
+
+-- Artist Table
+CREATE TABLE Artist (
+    ArtistId SERIAL PRIMARY KEY, -- Unique identifier for the artist
+    ArtistName VARCHAR(50) NOT NULL UNIQUE, -- Name of the artist
+    Nationality VARCHAR(50) NOT NULL, -- Nationality of the artist
+    ArtistPhoneNumber VARCHAR(20) NOT NULL -- Phone number of the artist
+);
+
+-- Event Table
+CREATE TABLE Events (
+    EventId SERIAL PRIMARY KEY, -- Unique identifier for the event
+    EventName VARCHAR(50) NOT NULL, -- Name of the event
+    SeatNumber INT NOT NULL CHECK (SeatNumber > 0), -- Number of seats available for the event
+    TicketPrice DECIMAL(10, 2) NOT NULL CHECK (TicketPrice > 0), -- Price of the ticket for the event
+    ArtistId INT NOT NULL, -- Foreign key referencing the Artist table
+    VenueId INT NOT NULL, -- Foreign key referencing the Club table
+    EventStatus VARCHAR(50) NOT NULL CHECK (EventStatus IN ('cancelled', 'passed', 'active')), -- Status of the event
+    EventDate DATE NOT NULL, -- Date of the event
+    CONSTRAINT FK_Event_ArtistId FOREIGN KEY (ArtistId) REFERENCES Artist(ArtistId),
+    CONSTRAINT FK_Event_VenueId FOREIGN KEY (VenueId) REFERENCES Club(VenueId),
+    CONSTRAINT UC_EventName UNIQUE (EventName)
+);
+
+-- Booking Table
+CREATE TABLE Booking (
+    BookingId SERIAL PRIMARY KEY, -- Unique identifier for the booking
+    TicketNumber INT NOT NULL, -- Number of tickets booked
+    EventId INT NOT NULL, -- Foreign key referencing the Event table
+    AmountToBePaid DECIMAL(10, 2) NOT NULL, -- Amount to be paid for the booking
+    BookingStatus VARCHAR(50) NOT NULL CHECK (BookingStatus IN ('cancelled', 'active', 'sold')), -- Status of the booking
+    BookingDate DATE NOT NULL, -- Date of the booking
+    RefundAmount DECIMAL(10, 2), -- Amount refunded for cancelled booking
+    RefundDate DATE, -- Date of the refund
+    CONSTRAINT FK_Booking_EventId FOREIGN KEY (EventId) REFERENCES Events(EventId),
+    CONSTRAINT CHK_Booking_TicketNumber CHECK (TicketNumber > 0),
+    CONSTRAINT CHK_RefundAmount CHECK (RefundAmount IS NULL OR RefundAmount >= 0),
+    CONSTRAINT CHK_RefundDate CHECK (RefundDate IS NULL OR RefundDate >= BookingDate)
+);
+
+-- Payment Table
+-- Payment Table
+CREATE TABLE Payment (
+    PaymentId SERIAL PRIMARY KEY, -- Unique identifier for the payment
+    BookingId INT NOT NULL, -- Foreign key referencing the Booking table
+    AccountId INT NOT NULL, -- Foreign key referencing the Account table
+    PaymentAmount DECIMAL(10, 2) NOT NULL, -- Amount paid
+    PaymentDate DATE NOT NULL, -- Date of the payment
+    PaymentMethod VARCHAR(50) NOT NULL, -- Payment method used (e.g., credit card, PayPal)
+    CONSTRAINT FK_Payment_BookingId FOREIGN KEY (BookingId) REFERENCES Booking(BookingId),
+    CONSTRAINT FK_Payment_AccountId FOREIGN KEY (AccountId) REFERENCES Account(AccountId)
+);
+drop table Payment;
+
+-- Account Table
+CREATE TABLE Account (
+    AccountId SERIAL PRIMARY KEY, -- Unique identifier for the account
+    AccountName VARCHAR(50) NOT NULL, -- Name of the account holder
+    Email VARCHAR(100) NOT NULL -- Email address of the account holder
+);
+select * from Club;
+select * from Artist;
+select * from Events;
+select * from Booking;
+select * from Payment;
+select * from account;
