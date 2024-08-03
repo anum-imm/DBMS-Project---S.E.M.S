@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">    <title>S.E.M.S</title>
+
+    <title>Book Your Tickets</title>
+ 
+    <style>
+        body {
+            background: #746aa0; /* Light purple background */
+            margin: 0;
+            padding: 20px; /* Padding around the content */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        
+        .header {
+            display: flex; /* Flex layout for alignment */
+            justify-content: flex-start; /* Align to the left */
+            padding: 10px; /* Padding around the header */
+        }
+
+        .social-icons {
+            display: flex; /* Flex layout for social icons */
+            gap: 10px; /* Space between icons */
+        }
+
+        .social-icons a {
+            color: white; /* White icons */
+            font-size: 1.5em; /* Larger icon size */
+            transition: color 0.3s ease-in-out; /* Smooth transition on hover */
+        }
+
+        .social-icons a:hover {
+            color: #FF4081; /* Pink on hover */
+        }
+
+        .container {
+            max-width: 800px; /* Maximum width for the container */
+            margin: 20px auto; /* Center the container */
+            background: white; /* White background for the container */
+            padding: 30px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            text-align: center; /* Centered text */
+        }
+
+        h1 {
+            text-transform: uppercase; /* Block letters for the heading */
+            color: #673AB7; /* Dark purple */
+            font-weight: 700; /* Bold text */
+            font-size: 2em; /* Larger font size */
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+
+        label {
+            font-weight: bold; /* Bold font for labels */
+            margin-bottom: 10px; /* Spacing below the label */
+            display: block; /* Ensures label occupies full width */
+        }
+
+        select, input[type="number"] {
+            font-size: 1em; /* Standard font size */
+            padding: 10px; /* Padding inside the field */
+            border: 1px solid #ddd; /* Solid border */
+            border-radius: 5px; /* Rounded corners */
+            margin: 10px 0; /* Spacing around the field */
+            width: 100%; /* Use full width */
+        }
+
+        .button-group {
+            margin-top: 20px; /* Spacing above the button group */
+        }
+
+        .btn-book, .btn-cancel {
+            font-size: 1.2em; /* Larger font size for buttons */
+            padding: 10px 20px; /* Padding inside the button */
+            border-radius: 5px; /* Rounded corners */
+            border: none; /* No border */
+            color: white; /* White text */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .btn-book {
+            background-color: #388E3C; /* Green for "Book Now" */
+        }
+
+        .btn-book:hover {
+            background-color: #2E7D32; /* Darker green on hover */
+        }
+
+        .btn-cancel {
+            background-color: #D32F2F; /* Red for "Cancel Booking" */
+        }
+
+        .btn-cancel:hover {
+            background-color: #C62828; /* Darker red on hover */
+        }
+
+        hr {
+            border: none; /* No border for the horizontal line */
+            border-top: 1px solid #ddd; /* Solid top border */
+            margin: 30px 0; /* Spacing around the horizontal line */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Social media icons in white at the top left -->
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a> <!-- Instagram icon added -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Book Your Tickets Here</h1> <!-- Block letters, dark purple -->
+        
+        <form action="/additional_booking" method="post"> <!-- Form for additional booking -->
+            <label for="event">Select Event:</label> <!-- Label for event selection -->
+            <select id="event" name="event" required>
+                {% for event in events %}
+                <option value="{{ event[0] }}">{{ event[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="tickets">Number of Tickets:</label> <!-- Label for number of tickets -->
+            <input type="number" id="tickets" name="tickets" min="1" required> <!-- Input for ticket count -->
+
+            <div class="button-group"> <!-- Group for buttons -->
+                <button type="submit" class="btn-book">Book Now</button> <!-- Book Now button -->
+            </div>
+        </form>
+
+        <hr> <!-- Horizontal line to separate sections -->
+
+        <form action="/cancel_booking" method="post"> <!-- Form to cancel a booking -->
+            <label for="booking_id">Enter Booking ID to Cancel:</label> <!-- Label for booking ID -->
+            <input type="number" id="booking_id" name="booking_id" required> <!-- Input for booking ID -->
+
+            <div class="button-group"> <!-- Group for buttons -->
+                <button type="submit" class="btn-cancel">Cancel Booking</button> <!-- Cancel Booking button -->
+            </div>
+        </form>
+    </div> <!-- End of container -->
+</body>
+</html>
+
+
+           
+            
+

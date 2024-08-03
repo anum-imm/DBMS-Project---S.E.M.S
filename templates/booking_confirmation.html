@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Ticket is Confirmed</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif ; /* Sets the font for the entire body */
+            background-color: #918ab2; /* Light grey background */
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #000000; /* Dark grey for the title */
+            text-align: center; /* Centers the title */
+            margin-bottom: 20px; /* Adds space below the title */
+        }
+        
+        p {
+            text-align: center; /* Centers the paragraph */
+            color: #3d3b3b; /* Slightly lighter grey for the text */
+            margin-bottom: 20px; /* Adds space below the paragraph */
+        }
+        
+        ul {
+            list-style-type: none; /* Removes the default list style */
+            padding: 0; /* Removes the default padding */
+            margin: 0 auto; /* Centers the list */
+            max-width: 600px; /* Limits the width of the list */
+            margin-bottom: 40px; /* Adds space below the list */
+        }
+        
+        li {
+            background-color: #fff; /* White background for each list item */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Padding inside each list item */
+            margin-bottom: 10px; /* Adds space below each list item */
+        }
+        
+        li:last-child {
+            margin-bottom: 0; /* Removes the bottom margin from the last list item */
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking Confirmation</h1>
+    <p>Your booking has been confirmed:</p>
+    <ul>
+        <li>Event ID: {{ event_id }}</li>
+        <li>Event Name: {{ event_name }}</li>
+        <li>Tickets: {{ tickets }}</li>
+        <li>Account Name: {{ account_name }}</li>
+        <li>Account ID: {{ account_id }}</li>
+        <li>Email: {{ email }}</li>
+        <li>Total Price: Rs. {{ total_price }}\-</li>
+        <li>Booking ID:  {{ booking_id }}</li>
+   </ul>
+    <!-- Display text for canceling the booking -->
+    <p>To cancel this booking, please use the <strong>Booking ID</strong>: {{ booking_id }}. Follow the instructions provided by our customer service team.</p>
+</body>
+</html>

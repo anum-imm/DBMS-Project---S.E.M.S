@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Canceled</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif; /* Sans-serif font for readability */
+            background-color: #786ab9; /* Light background color */
+            margin: 0;
+            padding: 20px;
+        }
+        
+   .container {
+            max-width: 800px; /* Limit the width of the container */
+            margin: 0 auto; /* Center the container */
+            background-color: #ffffff; /* White background for the container */
+            padding: 50px 30px; /* Increased padding for vertical length */
+            border-radius: 10px; /* Rounded corners for the container */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            text-align: center; /* Centered text */
+            min-height: 500px; /* Minimum height to make the box vertically longer */
+            display: flex; /* Use flexbox to center the text and the image */
+            flex-direction: column; /* Stack children vertically */
+            justify-content: center; /* Center children vertically */
+            align-items: center; /* Center children horizontally */
+        }
+        
+        h1 {
+            color: #333; /* Dark grey for the title */
+            text-align: center; /* Centers the title */
+            margin-bottom: 20px; /* Adds space below the title */
+            text-shadow: 0 1px 0 #333; /* Add a contrasting outline to the title */
+        }
+        
+        p {
+            color: #666; /* Slightly lighter grey for the text */
+            text-align: center; /* Centers the paragraph */
+            margin-bottom: 20px; /* Adds space below the paragraph */
+            text-shadow: 0 1px 0 #666; /* Add a contrasting outline to the paragraph */
+        }
+        
+        img {
+            max-width: 100%; /* Ensure the image scales properly */
+            height: auto; /* Maintain the aspect ratio */
+        }
+        
+        /* Additional styling for a footer */
+   .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333; /* Dark grey background for the footer */
+            color: white; /* White text for contrast */
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #ddd; /* Light grey border at the top of the footer */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Canceled <span style="font-size: 28px;">❌</span></h1>
+        <p>Your booking for {{ event_name }} has been canceled.</p>
+        <!-- You can include any other relevant information here -->
+         <div class="card">
+        <img src="static/e.jpg" alt="Broken Heart" style="width: 220px; height:180px">
+    </div>
+    </div>
+    <!-- Footer for additional information or links -->
+    <div class="footer">
+        <p>For any inquiries, please contact our support team.</p>
+    </div>
+</body>
+</html>

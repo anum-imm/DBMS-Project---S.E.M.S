@@ -1,0 +1,196 @@
+/* Import the Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+    color: #1c2427;
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+a {
+    color: #fcfcfc;
+    text-decoration: rgb(194, 135, 25);
+}
+
+/* Header Styles */
+header {
+    background-color: #746aa0;
+    padding: 1rem;
+}
+
+header h1 {
+    color: #fff;
+    margin: 1;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 1rem;
+    padding: 0 0.5rem; /* add padding between each word */
+}
+
+/* Hero Section Styles */
+#hero {
+    background-image: url("1.jpg");
+    background-size: center;
+    background-position: center;
+    height: 20cm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+#hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: #fff;
+    color: #008CBA;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Services Section Styles */
+#services {
+    padding: 5rem 0;
+}
+
+#services .service {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#services .service:nth-child(2) img {
+    background-image: url("/static/2.jpg");
+    background-position: center;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#services .service:nth-child(3) img {
+    background-image: url("/static/4.jpg");
+    background-position: center;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#services .service:nth-child(4) img {
+    background-image: url("/static/5.jpg");
+    background-size: contain;
+    background-position: center;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#services .service:nth-child(5) img {
+    background-image: url("/static/6.jpg");
+    background-size: contain;
+    background-position: center;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#services img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: none; /* hide the default image */
+}
+#services h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#services p {
+    font-size: 1.2rem;
+}
+
+/* About Section Styles */
+#about {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+#about p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Contact Section Styles */
+#contact {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#contact input,
+#contact textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1;
+}
+
+#contact input[type="submit"] {
+    background-color: #746aa0;
+    color: #fff;
+    padding: 0.5rem 2rem;
+}

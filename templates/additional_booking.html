@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome -->
+    <title>S.E.M.S - Additional Booking</title>
+    <style>
+        body {
+            background: #746aa0; /* Light purple background */
+            margin: 0;
+            padding: 20px; /* Padding around the content */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        
+       .header {
+            display: flex; /* Flex layout for alignment */
+            justify-content: flex-start; /* Align to the left */
+            padding: 10px; /* Padding around the header */
+        }
+
+       .social-media {
+            display: flex; /* Flex layout for social icons */
+            gap: 10px; /* Space between icons */
+        }
+
+       .social-media a {
+            color: white; /* White icons */
+            font-size: 1.5em; /* Larger icon size */
+            transition: color 0.3s ease-in-out; /* Smooth transition on hover */
+        }
+
+       .social-media a:hover {
+            color: #FF4081; /* Pink on hover */
+        }
+
+       .container {
+            max-width: 800px; /* Maximum width for the container */
+            margin: 20px auto; /* Center the container */
+            background: white; /* White background for the container */
+            padding: 30px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            text-align: center; /* Centered text */
+        }
+
+        h1 {
+            text-transform: uppercase; /* Block letters for the heading */
+            color: #673AB7; /* Dark purple */
+            font-weight: 700; /* Bold text */
+            font-size: 2em; /* Larger font size */
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+
+        label {
+            font-weight: bold; /* Bold font for labels */
+            margin-bottom: 10px; /* Spacing below the label */
+            display: block; /* Ensures label occupies full width */
+        }
+
+        select, input[type="number"], input[type="text"], input[type="email"] {
+            font-size: 1em; /* Standard font size */
+            padding: 10px; /* Padding inside the field */
+            border: 1px solid #ddd; /* Solid border */
+            border-radius: 5px; /* Rounded corners */
+            margin: 10px 0; /* Spacing around the field */
+            width: 100%; /* Use full width */
+        }
+
+       .button-group {
+            margin-top: 20px; /* Spacing above the button group */
+        }
+
+        button {
+            font-size: 1.2em; /* Larger font size for buttons */
+            padding: 10px 20px; /* Padding inside the button */
+            border-radius: 5px; /* Rounded corners */
+            border: none; /* No border */
+            color: white; /* White text */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #FF4081; /* Pink on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="social-media">
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Additional Booking</h1>
+        <form id="additionalBookingForm" action="/booking_confirmation" method="post"> 
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="account_id">Account ID:</label>
+            <input type="text" id="account_id" name="account_id" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method" required>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="PayPal">PayPal</option>
+                <!-- Additional payment methods can be added here -->
+            </select>
+
+            <input type="hidden" id="event_id" name="event_id" value="{{ event_id }}">
+            <input type="hidden" id="tickets" name="tickets" value="{{ tickets }}">
+            <input type="hidden" id="booking_id" name="booking_id" value="{{ booking_id }}">
+            <div class="button-group">
+                <button type="submit">Confirm Booking</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

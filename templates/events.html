@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events</title>
+    <!-- Google Fonts for improved typography -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">    <title>S.E.M.S</title>
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom styles for the page -->
+    <style>
+        body {
+            
+            background: #746aa0; /* Deep purple background */
+            margin: 0;
+            padding: 0;
+            height: auto; /* Automatically adjust based on content */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        
+        .header {
+            display: flex; /* Flex layout for alignment */
+            justify-content: flex-start; /* Align elements to the left */
+            padding: 20px; /* Padding around the header */
+        }
+
+        /* Social media icons on the top left */
+        .social-icons {
+            display: flex; /* Flex layout for social icons */
+            gap: 10px; /* Space between icons */
+        }
+
+        .social-icons a {
+            color: white; /* White icons */
+            font-size: 1.5em; /* Larger icon size */
+            transition: color 0.3s ease-in-out; /* Smooth transition on hover */
+        }
+
+        .social-icons a:hover {
+            color: #FF4081; /* Pink on hover */
+        }
+
+        h1 {
+            text-align: center;
+            color: #6A1B9A; /* Deep purple for the heading */
+            font-weight: 700; /* Bold text */
+            margin-top: 20px; /* Space at the top */
+        }
+
+        .content {
+            max-width: 1000px; /* Maximum width for the content */
+            margin: 0 auto; /* Center the content */
+            padding: 20px; /* Padding around the content */
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        }
+
+        table {
+            width: 100%; /* Use full width */
+            border-collapse: collapse; /* Collapse borders for seamless look */
+        }
+
+        th {
+            background-color: #EDE7F6; /* Light pastel purple */
+            color: #333; /* Darker text */
+            padding: 12px; /* Padding inside headers */
+            text-transform: uppercase; /* Block letters for headers */
+            text-align: left; /* Left-aligned text */
+        }
+
+        td {
+            border: 1px solid #ddd; /* Solid border */
+            padding: 12px; /* Padding inside cells */
+            text-align: left; /* Left-aligned text */
+        }
+
+        /* Blue color for event information */
+        .event-info {
+            color: #0a0a0a; /* Blue */
+        }
+
+        /* Alternate row colors for better readability */
+        tr:nth-child(even) {
+            background-color: #f5f5f5; /* Light grey for even rows */
+        }
+
+        /* Hover effect for rows */
+        tr:hover {
+            background-color: #D1C4E9; /* Light pastel purple on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Social media icons in white at the top left -->
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>All Events</h1> <!-- Page title -->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>EVENT NAME</th>
+                    <th>CAPACITY</th>
+                    <th>TICKET PRICE</th>
+                    <th>ARTIST NAME</th>
+                    <th>VENUE </th>
+                    <th>EVENT STATUS</th>
+                    <th>EVENT DATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Displaying event information with blue text -->
+                {% for event in events %}
+                <tr>
+                    <td class="event-info">{{ event[1] }}</td>
+                    <td class="event-info">{{ event[2] }}</td>
+                    <td class="event-info">{{ event[3] }}</td>
+                    <td class="event-info">{{ event[4] }}</td>
+                    <td class="event-info">{{ event[5] }}</td>
+                    <td class="event-info">{{ event[6] }}</td>
+                    <td class="event-info">{{ event[7] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> <!-- End of content -->
+</body>
+</html>
